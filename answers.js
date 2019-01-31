@@ -1,5 +1,3 @@
-//WORK IN PROGRESS
-
 
 
 let getUSA = () =>
@@ -97,3 +95,76 @@ let favoriteColor = () =>
         })
 
 }
+
+//#9
+let nameHover = () =>
+{
+   
+    let tds = document.getElementsByClassName("empName");
+    
+    let callback = (e) => {
+    if (e.style.display != "hidden")
+            e.style.visibility = "visible";
+    else
+           { e.style.visibility = "hidden";
+    }}
+
+    for (td in tds)
+        tds[td].addEventListener("hover", callback(tds[td]));
+
+}
+
+//#10
+let currentTime = () =>
+{
+    let time = Date.now();
+    let timeHeader = document.getElementById("currentTime");
+    let updateTime = () =>
+    {
+        if (time != Date.now())
+        time = Date.now();
+        timeHeader.innerHTML = +time;
+
+    }
+    setInterval(updateTime, 1000)
+
+}
+
+//#11
+let delayFunc = () =>
+{
+
+    let hw = document.getElementById("helloworld");
+    let updateColor = () =>
+    {
+        hw.style.color = "rgba(" + (Math.random*255) + "," + (Math.random*255) + "," + (Math.random*255) + ")"
+        clearInterval(updateColor)
+    }
+    hw.addEventListener("onclick", (() => setInterval(updateColor, 3000)));
+
+}
+
+//#12 depth first traversal of the dom tree
+let walkTheDom = (node, func) =>
+{
+    //recursion initial condition
+    if (!node)
+    let node = document.documentElement;
+
+    //recursion termination
+    if (nodes.childNodes.length == 0) 
+    {
+        func(node);
+        return;
+    }
+
+    //recursion step
+    for (nodes in node)
+    {
+        func(node);
+        traverseDom(node[nodes]);
+    }
+
+}
+
+
